@@ -2,15 +2,15 @@
 ##How to use ?
 
 1. Edit .bashrc file  
-..* Run terminal  
-..* `$ vi ~/.bashrc`  
-..* paste the code written in repository .bashrc file  
-..* Save and exit  
+  * Run terminal  
+  * `$ vi ~/.bashrc`  
+  * paste the code written in repository .bashrc file  
+  * Save and exit  
 2. Place your ap.jar package like ~/ap/ap.jar (or change .bashrc path)  
 3. Use like :  
-..* `$ compile myFileName`  
+  * `$ compile myFileName`  
 4. Warning :  
-..* You must write file name **without** extention  
-..* Your working directory must be file directory (`$ cd ~/ap/path/`)  
+  * You must write file name **without** extention  
+  * Your working directory must be file directory (`$ cd ~/ap/path/`)  
 
 ##What's in the V2.0 ?
