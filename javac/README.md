@@ -1,5 +1,12 @@
 #javac quick compiler
 ##How to use ?
+###Auto installation (Coming soon)
+
+1. Download install file
+2. Provide execution rights (`$ chmod 700 install`)
+3. Execute (`$ ./install`)
+
+###Manual installation
 
 1. Edit .bashrc file  
   * Run terminal  
