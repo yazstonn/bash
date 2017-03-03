@@ -1,0 +1,38 @@
+#host=$(cat /home/infoetu/$1/Public/hostname) || exit 1
+
+#ssh $host
+server="/home/infoetu/sengesc/Public/server"
+fileName="$server/tempChat.txt"
+touch "$fileName"
+
+printf "\n\n ---- $USER join the chat ----\n\n" >> $fileName;
+
+function quit {
+	clear;
+	printf "\n\n ---- $USER left the chat ----\n\n" >> $fileName;
+	egrep --color "$USER :|$" $fileName;
+	exit 0;
+}
+
+#trap ctrl_c INT
+
+while true
+do
+	egrep --color "$USER :|$" $fileName; 
+	#echo "Press [t] to chat or [q] to quit.";
+	read -s -n 1 -t 1 key;
+	if [[ "$key" = t ]]
+	then
+		read -t 30 -p "Message : " msg;
+		if [ -n "$msg" ]
+		then
+			if [ -n "$msg" ]
+				then echo "$USER : $msg" >> $fileName;
+			fi
+		fi
+	elif [[ "$key" = q ]]
+		then 
+			quit
+	fi
+	clear
+done
