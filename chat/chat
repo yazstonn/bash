@@ -1,7 +1,4 @@
-#host=$(cat /home/infoetu/$1/Public/hostname) || exit 1
-
-#ssh $host
-server="/home/infoetu/sengesc/Public/server"
+server="/home/infoetu/sengesc/Public/TheChat/server"
 fileName="$server/tempChat.txt"
 touch "$fileName"
 
