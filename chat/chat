@@ -1,3 +1,5 @@
+#!/bin/bash
+
 server="/home/infoetu/sengesc/Public/TheChat/server"
 fileName="$server/tempChat.txt"
 touch "$fileName"
