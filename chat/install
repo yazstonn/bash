@@ -4,8 +4,8 @@ b="~/.bashrc"
 d="TheChat"
 curdir=$(pwd)
 echo '# ----- chat ----- #' >> $b
-echo '$HOSTNAME > ~/Public/hostname' >> $b
-echo 'alias chat="~/Public/./chat"' >> $b
+echo '$HOSTNAME > ~/Public/TheChat/hostname' >> $b
+echo 'alias chat="~/Public/TheChat/./chat"' >> $b
 
 cd ~/Public
 mkdir "$d"
