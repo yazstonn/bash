@@ -19,7 +19,7 @@ function quit {
 }
 
 function notify {
-	zenity --info --text="You got poked !" --title="Poke incoming"
+	zenity --info --text="You got poked by "$USER" !" --title="la pokance"
 }
 
 function helpme {
