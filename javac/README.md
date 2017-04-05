@@ -6,18 +6,17 @@
 2. Provide execution rights (`$ chmod 700 install`)
 3. Execute (`$ ./install`)
 
-###Manual installation
+###Installation manuelle
 
-1. Edit .bashrc file  
-  * Run terminal  
+1. Editer le .bashrc  
+  * Lancer un terminal  
   * `$ vi ~/.bashrc`  
-  * paste the code written in repository .bashrc file  
+  * Copiez le code fourni dans le repo
   * Save and exit  
-2. Place your ap.jar package like ~/ap/ap.jar (or change .bashrc path)  
-3. Use like :  
-  * `$ compile myFileName`  
-4. Warning :  
-  * You must write file name **without** extention  
-  * Your working directory must be file directory (`$ cd ~/ap/path/`)  
+2. Mettez votre ap.jar tel que : ~/ap/ap.jar (ou changez le chemin dans la fonction .bashrc)  
+3. Utilisation :  
+  * `$ compile nomDuFichierJava`  
 
-##What's in the V2.0 ?
+4. Attention :  
+  * Le nom du fichier java doit impérativement être écrit **sans extension**  
+  * Veillez à être dans le bon répertoire  
