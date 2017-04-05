@@ -1,4 +1,4 @@
-#Installation manuelle  
+# Installation manuelle  
 
 1. Editer le .bashrc  
   * Lancer un terminal  
