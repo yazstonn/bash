@@ -19,7 +19,8 @@ function quit {
 }
 
 function notify {
-	zenity --info --text="You got poked !" --title="Poke incoming"
+	read mess
+	zenity --info --text= $mess --title="Poke incoming"
 }
 
 function helpme {
