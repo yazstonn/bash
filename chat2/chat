@@ -1,0 +1,94 @@
+#!/bin/bash
+
+server="/home/infoetu/sengesc/Public/TheChat/server"
+fileName="$server/tempChat.txt"
+touch "$fileName"
+
+touch "/home/infoetu/sengesc/Public/TheChat/who/$USER"
+
+#printf "\n\n ---- $USER join the chat ($(date +%d-%m-%Y) # $(date +%H:%M:%S)) ----\n\n" >> $fileName;
+printf "\n\n[$USER] join the chat\n\n" >> $fileName;
+
+function quit {
+	clear;
+	#printf "\n\n ---- $USER left the chat ($(date +%d-%m-%Y) # $(date +%H:%M:%S)) ----\n\n" >> $fileName;
+	printf "\n[$USER] left the chat\n\n" >> $fileName;
+	egrep --color "$USER :|$" $fileName;
+	rm -f "/home/infoetu/sengesc/Public/TheChat/who/$USER";
+	exit 0;
+}
+
+function notify {
+	zenity --info --text="You got poked !" --title="Poke incoming"
+}
+
+function helpme {
+	zenity --info --text="/poke : Poke someone\n /clear : clear the chat\n /who : Show connected users" --title="Help my ass"
+}
+
+function whoishere {
+	printf "# Connected users :\n" >> $fileName;
+	ls -1 "/home/infoetu/sengesc/Public/TheChat/who" >> $fileName;
+	printf "--\n\n" >> $fileName;
+}
+
+#trap ctrl_c INT
+
+while true
+do
+	#Check pour les pokes
+	if [ -e /home/infoetu/sengesc/Public/TheChat/notif/$USER ]
+		then notify
+		rm -f /home/infoetu/sengesc/Public/TheChat/notif/$USER
+	fi
+
+	egrep --color "$USER :|$" $fileName; 
+	#echo "Press [t] to chat or [q] to quit.";
+	read -s -n 1 -t 1 key;
+	if [[ "$key" = t ]]
+	then
+		read -t 30 -p "Message : " msg;
+		if [ -n "$msg" ]
+		then
+			if [ -n "$msg" ]
+				then echo "$USER : $msg" >> $fileName;
+			fi
+		fi
+	elif [[ "$key" = q ]]
+		then 
+			quit
+	elif [[ "$key" = '/' ]]
+		then
+		read -t 30 -p "/" msg;
+		if [ -n "$msg" ]
+		then
+			case $msg in
+			    clear)
+			        echo '' > "/home/infoetu/sengesc/Public/TheChat/server/tempChat.txt"
+			        printf "\n ---- chat cleared ($(date +%d-%m-%Y) # $(date +%H:%M:%S)) ----\n\n" >> $fileName;
+			        ;;
+			    poke)
+			        read -t 30 -p "Who : " ntf;
+						if [ -n "$ntf" ]
+							then
+							touch /home/infoetu/sengesc/Public/TheChat/notif/$ntf
+							chmod 777 /home/infoetu/sengesc/Public/TheChat//notif/$ntf
+							printf "\n[$USER] sent a poke to $ntf\n\n" >> $fileName;
+						fi
+			        ;;
+			    help)
+			        helpme
+			        ;;
+			    who)
+					whoishere
+					;;
+			    ChuckNorris)
+			        echo "$USER is a godamn boss" >> $fileName
+			        ;;
+			    *)
+			        echo "Unknown command"
+			esac
+		fi
+	fi
+	clear
+done

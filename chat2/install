@@ -1,0 +1,15 @@
+#!/bin/bash
+
+b="~/.bashrc"
+d="TheChat"
+curdir=$(pwd)
+echo '# ----- chat ----- #' >> $b
+echo '$HOSTNAME > ~/Public/TheChat/hostname' >> $b
+echo 'alias chat="~/Public/TheChat/./chat"' >> $b
+
+cd ~/Public
+mkdir "$d"
+cd $d
+cp -R $curdir/* .
+rm -f install
+cd $curdir
